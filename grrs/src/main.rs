@@ -21,6 +21,13 @@ struct Cli {
 
 fn main() {
     let args = Cli::parse();
+    println!("Looking fo pattern: '{}', in file: '{}'", args.pattern, args.path.display());
+    let content = std::fs::read_to_string(&args.path)
+        .expect("could not read file");
 
-    println!("pattern: {}, path: {}", args.pattern, args.path.display());
+    for line in content.lines() {
+        if line.contains(&args.pattern) {
+            println!("{}", line);
+        }
+    }
 }

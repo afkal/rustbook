@@ -4,8 +4,12 @@
  */
 
 
-fn longest(string_a : &str, string_b : &str) -> &str {
-    return string_a;
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
 }
 
 fn main() {
